@@ -11,20 +11,15 @@ namespace ConsoleApp4
 
         public class City
         {
-            // Поля класу
             private string name;
             private string country;
             private int population;
             private string phoneCode;
             private List<string> districts;
-
-            // Конструктор за замовчуванням
             public City()
             {
                 districts = new List<string>();
             }
-
-            // Конструктор з параметрами
             public City(string name, string country, int population, string phoneCode, List<string> districts)
             {
                 this.name = name;
@@ -33,8 +28,6 @@ namespace ConsoleApp4
                 this.phoneCode = phoneCode;
                 this.districts = districts;
             }
-
-            // Методи для введення даних
             public void SetName(string name)
             {
                 this.name = name;
@@ -59,8 +52,6 @@ namespace ConsoleApp4
             {
                 this.districts = districts;
             }
-
-            // Методи для отримання даних
             public string GetName()
             {
                 return name;
@@ -85,8 +76,6 @@ namespace ConsoleApp4
             {
                 return districts;
             }
-
-            // Метод для виведення даних
             public void DisplayInfo()
             {
                 Console.WriteLine($"Назва міста: {name}");
@@ -96,24 +85,18 @@ namespace ConsoleApp4
                 Console.WriteLine("Райони міста: " + string.Join(", ", districts));
             }
         }
-
-        // Демонстрація роботи класу
         class Program
         {
             static void Main(string[] args)
             {
                 City city = new City();
 
-                // Введення даних
-                city.SetName("Київ");
+                city.SetName("Вінниця ");
                 city.SetCountry("Україна");
-                city.SetPopulation(2968000);
+                city.SetPopulation(348000);
                 city.SetPhoneCode("044");
-                city.SetDistricts(new List<string> { "Шевченківський", "Печерський", "Оболонський" });
-
-                // Виведення даних
+                city.SetDistricts(new List<string> { "Шевченківський", "Поділля", "Замостя" });
                 city.DisplayInfo();
             }
         }
     }
-
