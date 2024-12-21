@@ -6,51 +6,114 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4
 {
-    class Program
-    {
-        static void SortArray(int[] arr, bool ascending)
-        {
-            int n = arr.Length;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
+  
 
-                    if ((ascending && arr[j] > arr[j + 1]) || (!ascending && arr[j] < arr[j + 1]))
-                    {
-                        int temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
+
+        public class City
+        {
+            // Поля класу
+            private string name;
+            private string country;
+            private int population;
+            private string phoneCode;
+            private List<string> districts;
+
+            // Конструктор за замовчуванням
+            public City()
+            {
+                districts = new List<string>();
+            }
+
+            // Конструктор з параметрами
+            public City(string name, string country, int population, string phoneCode, List<string> districts)
+            {
+                this.name = name;
+                this.country = country;
+                this.population = population;
+                this.phoneCode = phoneCode;
+                this.districts = districts;
+            }
+
+            // Методи для введення даних
+            public void SetName(string name)
+            {
+                this.name = name;
+            }
+
+            public void SetCountry(string country)
+            {
+                this.country = country;
+            }
+
+            public void SetPopulation(int population)
+            {
+                this.population = population;
+            }
+
+            public void SetPhoneCode(string phoneCode)
+            {
+                this.phoneCode = phoneCode;
+            }
+
+            public void SetDistricts(List<string> districts)
+            {
+                this.districts = districts;
+            }
+
+            // Методи для отримання даних
+            public string GetName()
+            {
+                return name;
+            }
+
+            public string GetCountry()
+            {
+                return country;
+            }
+
+            public int GetPopulation()
+            {
+                return population;
+            }
+
+            public string GetPhoneCode()
+            {
+                return phoneCode;
+            }
+
+            public List<string> GetDistricts()
+            {
+                return districts;
+            }
+
+            // Метод для виведення даних
+            public void DisplayInfo()
+            {
+                Console.WriteLine($"Назва міста: {name}");
+                Console.WriteLine($"Країна: {country}");
+                Console.WriteLine($"Кількість жителів: {population}");
+                Console.WriteLine($"Телефонний код: {phoneCode}");
+                Console.WriteLine("Райони міста: " + string.Join(", ", districts));
             }
         }
-        static void PrintArray(int[] arr)
-        {
-            foreach (int num in arr)
-            {
-                Console.Write(num + " ");
-            }
-            Console.WriteLine();
-        }
-        static void Main()
-        {
-            Console.Write("Введіть кількість елементів масиву: ");
-            int n = int.Parse(Console.ReadLine());
 
-            int[] arr = new int[n];
-            Random rand = new Random();
-            for (int i = 0; i < n; i++)
+        // Демонстрація роботи класу
+        class Program
+        {
+            static void Main(string[] args)
             {
-                arr[i] = rand.Next(1, 101); 
+                City city = new City();
+
+                // Введення даних
+                city.SetName("Київ");
+                city.SetCountry("Україна");
+                city.SetPopulation(2968000);
+                city.SetPhoneCode("044");
+                city.SetDistricts(new List<string> { "Шевченківський", "Печерський", "Оболонський" });
+
+                // Виведення даних
+                city.DisplayInfo();
             }
-            Console.WriteLine("Масив до сортування:");
-            PrintArray(arr);
-            Console.Write("Виберіть порядок сортування (1 для зростання, 0 для спаду): ");
-            int choice = int.Parse(Console.ReadLine());
-            SortArray(arr, choice == 1);
-            Console.WriteLine("Масив після сортування:");
-            PrintArray(arr);
         }
     }
-}
+
