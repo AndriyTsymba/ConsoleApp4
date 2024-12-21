@@ -6,43 +6,51 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4
 {
-    internal class Program
+    class Program
     {
-        static  bool FibonacciEquals(int number)
+        static void SortArray(int[] arr, bool ascending)
         {
-
-            if (number < 0)
-                return false;
-
-            int a = 0;
-            int b = 1;
-
-            while (a <= number)
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
             {
-                if (a == number)
-                    return true;
+                for (int j = 0; j < n - i - 1; j++)
+                {
 
-                int next = a + b;
-                a = b;
-                b = next;
+                    if ((ascending && arr[j] > arr[j + 1]) || (!ascending && arr[j] < arr[j + 1]))
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
             }
-
-            return false;
         }
-
+        static void PrintArray(int[] arr)
+        {
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+        }
         static void Main()
         {
-            Console.InputEncoding = Encoding.Unicode;
-            Console.OutputEncoding = Encoding.Unicode;
+            Console.Write("Введіть кількість елементів масиву: ");
+            int n = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter num: ");
-            var num1 = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter range: ");
-            var num2 = Convert.ToInt32(Console.ReadLine());
-
-            bool isFibonacci = FibonacciEquals(num1);
-
-            Console.WriteLine(isFibonacci);
+            int[] arr = new int[n];
+            Random rand = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = rand.Next(1, 101); 
+            }
+            Console.WriteLine("Масив до сортування:");
+            PrintArray(arr);
+            Console.Write("Виберіть порядок сортування (1 для зростання, 0 для спаду): ");
+            int choice = int.Parse(Console.ReadLine());
+            SortArray(arr, choice == 1);
+            Console.WriteLine("Масив після сортування:");
+            PrintArray(arr);
         }
     }
 }
