@@ -6,114 +6,121 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4
 {
-  
+    public class Employee
+    {
+        // Поля класу
+        private string fullName;
+        private DateTime dateOfBirth;
+        private string contactPhone;
+        private string workEmail;
+        private string position;
+        private string jobDescription;
 
+        // Конструктор за замовчуванням
+        public Employee() { }
 
-        public class City
+        // Конструктор з параметрами
+        public Employee(string fullName, DateTime dateOfBirth, string contactPhone, string workEmail, string position, string jobDescription)
         {
-            // Поля класу
-            private string name;
-            private string country;
-            private int population;
-            private string phoneCode;
-            private List<string> districts;
-
-            // Конструктор за замовчуванням
-            public City()
-            {
-                districts = new List<string>();
-            }
-
-            // Конструктор з параметрами
-            public City(string name, string country, int population, string phoneCode, List<string> districts)
-            {
-                this.name = name;
-                this.country = country;
-                this.population = population;
-                this.phoneCode = phoneCode;
-                this.districts = districts;
-            }
-
-            // Методи для введення даних
-            public void SetName(string name)
-            {
-                this.name = name;
-            }
-
-            public void SetCountry(string country)
-            {
-                this.country = country;
-            }
-
-            public void SetPopulation(int population)
-            {
-                this.population = population;
-            }
-
-            public void SetPhoneCode(string phoneCode)
-            {
-                this.phoneCode = phoneCode;
-            }
-
-            public void SetDistricts(List<string> districts)
-            {
-                this.districts = districts;
-            }
-
-            // Методи для отримання даних
-            public string GetName()
-            {
-                return name;
-            }
-
-            public string GetCountry()
-            {
-                return country;
-            }
-
-            public int GetPopulation()
-            {
-                return population;
-            }
-
-            public string GetPhoneCode()
-            {
-                return phoneCode;
-            }
-
-            public List<string> GetDistricts()
-            {
-                return districts;
-            }
-
-            // Метод для виведення даних
-            public void DisplayInfo()
-            {
-                Console.WriteLine($"Назва міста: {name}");
-                Console.WriteLine($"Країна: {country}");
-                Console.WriteLine($"Кількість жителів: {population}");
-                Console.WriteLine($"Телефонний код: {phoneCode}");
-                Console.WriteLine("Райони міста: " + string.Join(", ", districts));
-            }
+            this.fullName = fullName;
+            this.dateOfBirth = dateOfBirth;
+            this.contactPhone = contactPhone;
+            this.workEmail = workEmail;
+            this.position = position;
+            this.jobDescription = jobDescription;
         }
 
-        // Демонстрація роботи класу
-        class Program
+        // Методи для введення даних
+        public void SetFullName(string fullName)
         {
-            static void Main(string[] args)
-            {
-                City city = new City();
+            this.fullName = fullName;
+        }
 
-                // Введення даних
-                city.SetName("Київ");
-                city.SetCountry("Україна");
-                city.SetPopulation(2968000);
-                city.SetPhoneCode("044");
-                city.SetDistricts(new List<string> { "Шевченківський", "Печерський", "Оболонський" });
+        public void SetDateOfBirth(DateTime dateOfBirth)
+        {
+            this.dateOfBirth = dateOfBirth;
+        }
 
-                // Виведення даних
-                city.DisplayInfo();
-            }
+        public void SetContactPhone(string contactPhone)
+        {
+            this.contactPhone = contactPhone;
+        }
+
+        public void SetWorkEmail(string workEmail)
+        {
+            this.workEmail = workEmail;
+        }
+
+        public void SetPosition(string position)
+        {
+            this.position = position;
+        }
+
+        public void SetJobDescription(string jobDescription)
+        {
+            this.jobDescription = jobDescription;
+        }
+
+        // Методи для отримання даних
+        public string GetFullName()
+        {
+            return fullName;
+        }
+
+        public DateTime GetDateOfBirth()
+        {
+            return dateOfBirth;
+        }
+
+        public string GetContactPhone()
+        {
+            return contactPhone;
+        }
+
+        public string GetWorkEmail()
+        {
+            return workEmail;
+        }
+
+        public string GetPosition()
+        {
+            return position;
+        }
+
+        public string GetJobDescription()
+        {
+            return jobDescription;
+        }
+
+        // Метод для виведення даних
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"ПІБ: {fullName}");
+            Console.WriteLine($"Дата народження: {dateOfBirth.ToShortDateString()}");
+            Console.WriteLine($"Контактний телефон: {contactPhone}");
+            Console.WriteLine($"Робочий email: {workEmail}");
+            Console.WriteLine($"Посада: {position}");
+            Console.WriteLine($"Опис обов'язків: {jobDescription}");
         }
     }
+
+    // Демонстрація роботи класу
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee employee = new Employee();
+
+            // Введення даних
+            employee.SetFullName("Іваненко Іван Іванович");
+            employee.SetDateOfBirth(new DateTime(2007, 9, 28));
+            employee.SetContactPhone("+380501234567");
+            employee.SetWorkEmail("ivan452@gmail.com");
+            employee.SetPosition("Менеджер проектів");
+            employee.SetJobDescription("Керування проектами, координація команди, звітність.");
+            employee.DisplayInfo();
+        }
+    }
+
+}
 
